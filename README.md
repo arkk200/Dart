@@ -43,3 +43,38 @@ void main() {
 
 다트는 스타일가디의 권장방식은 함수나 메소드 내에 지역변수는 var 키워드로 선언하고,<br>
 클래스에 변수, 프로퍼티는 타입을 명시하고 선언하는 것이다.
+
+## **1-2. Dynamic Type**
+dynamic 타입은 타입이 자유로운 변수를 선언할 때 사용하는 타입이다.<br>
+var로 변수를 선언하고 값을 주지 않았을 때 dynamic 타입이 된다.
+
+그러면 아래처럼 여러 타입의 값을 할당해줄 수 있다.
+```dart
+void main() {
+    var age;
+    age = 16;
+    age = "sixteen";
+    age = true;
+}
+```
+
+아래처럼 명시해 줄 수도 있다.
+```dart
+void main() {
+    dynamic age;
+    age = 16;
+    age = "sixteen";
+    age = true;
+}
+```
+
+아래처럼 타입 체크도 할 수 있다.
+```dart
+void main() {
+    dynamic age;
+    if(age is String) {
+    }
+}
+```
+
+외부에서 데이터를 받았는데 그 데이터의 타입을 모를 때 dynamic을 쓸 수 있다.
