@@ -95,10 +95,10 @@ if 문으로 막아줄 수도 있지만<br>
 ?.로 메소드나 속성에 접근하면 변수가 null일 경우 접근을 막아준다.
 ```dart
 void main() {
-  String? phone = 'Galaxy Quantum 3';
-  print(phone?.startsWith('Galaxy')); // true
-  phone = null;
-  print(phone?.startsWith('iPhone')); // null
+    String? phone = 'Galaxy Quantum 3';
+    print(phone?.startsWith('Galaxy')); // true
+    phone = null;
+    print(phone?.startsWith('iPhone')); // null
 }
 ```
 
@@ -106,23 +106,23 @@ void main() {
 final은 상수 타입으로 한번 값이 할당된 변수를 다른 값으로 할당되는 것을 막아준다.
 ```dart
 void main() {
-  final PI = 3.14159;
-  // PI = 2.71828; 에러 발생
+    final PI = 3.14159;
+    // PI = 2.71828; 에러 발생
 }
 ```
 한번 값이 할당된 후부터 다른 값으로 할당되는 것을 막기 때문에,<br>
 선언만 하고 밑에서 값을 할당해줘도 된다.
 ```dart
 void main() {
-  final PI;
-  PI = 3.14159;
-  // PI = 2.71828; 에러 발생
+    final PI;
+    PI = 3.14159;
+    // PI = 2.71828; 에러 발생
 }
 ```
 타입을 지정해 줄 수도 있다.
 ```dart
 void main() {
-  final double PI = 3.14159;
+    final double PI = 3.14159;
 }
 ```
 
@@ -149,5 +149,16 @@ class GoodClass {
 class GoodClass {
     late final PI; // 나중에 인스턴스를 만든 후 값을 할당할 수 있음
     late String name;
+}
+```
+
+## **1-6. Constant Variables**
+const는 final과 비슷한데 변수를 선언할 때 초기화해줘야 한다는 점이 다른다.<br>
+(final은 변수를 선언한 후 나중에 값을 할당해줘도 된다.)
+```dart
+void main() {
+    const PI = 3.14159;
+    const E; // 에러 발생
+    E = 2.71828; // 에러 발생
 }
 ```
