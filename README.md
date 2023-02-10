@@ -1,3 +1,5 @@
+### **[이 사이트](https://nomadcoders.co/) 학습하고 있습니다.**
+
 # **0. 왜 다트인가**
 
 ### **다트는 2개의 컴파일러를 가지고 있다.**
@@ -97,5 +99,29 @@ void main() {
   print(phone?.startsWith('Galaxy')); // true
   phone = null;
   print(phone?.startsWith('iPhone')); // null
+}
+```
+
+## **1-4. Final Variables**
+final은 상수 타입으로 한번 값이 할당된 변수를 다른 값으로 할당되는 것을 막아준다.
+```dart
+void main() {
+  final PI = 3.14159;
+  // PI = 2.71828; 에러 발생
+}
+```
+한번 값이 할당된 후부터 다른 값으로 할당되는 것을 막기 때문에,<br>
+선언만 하고 밑에서 값을 할당해줘도 된다.
+```dart
+void main() {
+  final PI;
+  PI = 3.14159;
+  // PI = 2.71828; 에러 발생
+}
+```
+타입을 지정해 줄 수도 있다.
+```dart
+void main() {
+  final double PI = 3.14159;
 }
 ```
