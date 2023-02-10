@@ -125,3 +125,29 @@ void main() {
   final double PI = 3.14159;
 }
 ```
+
+## **1-5. Late Variables**
+late는 클래스에서 쓸모있는 키워드이다.
+
+dart에 클래스를 잠깐 살펴보면
+```dart
+class 클래스명 {
+    멤버 변수
+}
+```
+
+처럼 쓰는데 dynamic 타입이 아닌 멤버 변수를 선언하면 무조건 초기화해줘야한다.
+```dart
+class GoodClass {
+    final PI; // 에러 발생
+    String name; // 에러 발생
+}
+```
+
+근데 late를 쓰면 인스턴스를 만들고 나중에 초기화 해줄 수 있다.
+```dart
+class GoodClass {
+    late final PI; // 나중에 인스턴스를 만든 후 값을 할당할 수 있음
+    late String name;
+}
+```
