@@ -164,7 +164,7 @@ void main() {
 ```
 
 # **2. 데이터 타입**
-다트에 모든 것들이 오브젝트이다.<br>
+다트는 모든 것들이 오브젝트이다.<br>
 String, int, double, bool 또한 오브젝트로 이루어져있고 함수도 오브젝트이다.
 
 ## **2-1. Lists**
@@ -214,16 +214,16 @@ void main() {
 String Interpolation, 문자열 보간은 다트에서 $변수명 형태로 사용한다.
 ```dart
 void main() {
-  var name = 'leemyeongjae';
-  var greeting = 'Hello, My name is $name';
-  print(greeting);
+    var name = 'leemyeongjae';
+    var greeting = 'Hello, My name is $name';
+    print(greeting);
 }
 ```
 만약 변수를 계산한 값을 사용하고 싶다면 중괄호로 묶어주면 된다.
 ```dart
 void main() {
-  var time = 23;
-  print("Current time is ${time % 12} o'clock");
+    var time = 23;
+    print("Current time is ${time % 12} o'clock");
 }
 ```
 
@@ -231,13 +231,13 @@ void main() {
 collection if와 비슷하게 collection for는 리스트 내에 for문을 쓴느 방식이다.
 ```dart
 void main() {
-  var favoriteAnimals = ['cat', 'dog', 'eagle'];
-  var animals = [
-    'duck',
-    'lion',
-    for (var animal in favoriteAnimals) "♥︎$animal"
-  ];
-  print(animals); // [duck, lion, ♥︎cat, ♥︎dog, ♥︎eagle]
+    var favoriteAnimals = ['cat', 'dog', 'eagle'];
+    var animals = [
+        'duck',
+        'lion',
+        for (var animal in favoriteAnimals) "♥︎$animal"
+    ];
+    print(animals); // [duck, lion, ♥︎cat, ♥︎dog, ♥︎eagle]
 }
 ```
 다트에 for in문은 파이썬에 for in과 비슷하다.<br>
@@ -246,11 +246,50 @@ collection if 처럼 소괄호 옆에 있는 값이 리스트 내에 들어간�
 아래 코드와 같다.
 ```dart
 void main() {
-  var favoriteAnimals = ['cat', 'dog', 'eagle'];
-  var animals = ['duck', 'lion'];
-  for (var animal in favoriteAnimals) {
-    animals.add("♥︎$animal");
-  }
-  print(animals); // [duck, lion, ♥︎cat, ♥︎dog, ♥︎eagle]
+    var favoriteAnimals = ['cat', 'dog', 'eagle'];
+    var animals = ['duck', 'lion'];
+    for (var animal in favoriteAnimals) {
+        animals.add("♥︎$animal");
+    }
+    print(animals); // [duck, lion, ♥︎cat, ♥︎dog, ♥︎eagle]
+}
+```
+
+## **2-4. Maps**
+Maps는 JS, TS의 오브젝트, 파이썬에 딕셔너리와 비슷하다.
+```dart
+void main() {
+    var language = {
+        'name': 'Dart',
+        'Developer': 'Google',
+        'DesignedBy': ['Lars Bak', 'Kasper Lund'],
+        'FirstAppeared': 2013,
+    };
+}
+```
+`var 변수명 = { 키: 값 }` 형태로 쓰고 Map<키타입, 값타입> 형태의 타입을 갖는다.<br>
+위의 경우엔 키는 String, 값은 Object가 된다.
+
+**[챕터 2](#2-데이터-타입)** 시작부분에도 나와있듯이 dart에선 모든게 객체이다. 그리고 모든 객체는 Object 클래스에서 상속된다.
+
+Map도 마찬가지로 타입을 지정해줄 수 있다.
+```dart
+void main() {
+    Map<int, bool> a = {
+        1: false,
+        2: true,
+        3: true,
+        4: false,
+        5: true,
+    };
+}
+```
+이런 형태도 올 수 있다.
+```dart
+void main() {
+    Map<List<int>, bool> isEven = {
+        [2, 4, 6, 8, 10]: true,
+        [1, 3, 5, 7, 9]: false
+    };
 }
 ```
