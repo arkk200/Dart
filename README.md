@@ -209,3 +209,20 @@ void main() {
     print(numList); // [1, 2, 3, 4, 5]
 }
 ```
+
+## **2-2. String Interpolation**
+String Interpolation, 문자열 보간은 다트에서 $변수명 형태로 사용한다.
+```dart
+void main() {
+  var name = 'leemyeongjae';
+  var greeting = 'Hello, My name is $name';
+  print(greeting);
+}
+```
+만약 변수를 계산한 값을 사용하고 싶다면 중괄호로 묶어주면 된다.
+```dart
+void main() {
+  var time = 23;
+  print("Current time is ${time % 12} o'clock");
+}
+```
