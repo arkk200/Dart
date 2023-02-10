@@ -226,3 +226,31 @@ void main() {
   print("Current time is ${time % 12} o'clock");
 }
 ```
+
+## **2-3. Collection For**
+collection if와 비슷하게 collection for는 리스트 내에 for문을 쓴느 방식이다.
+```dart
+void main() {
+  var favoriteAnimals = ['cat', 'dog', 'eagle'];
+  var animals = [
+    'duck',
+    'lion',
+    for (var animal in favoriteAnimals) "♥︎$animal"
+  ];
+  print(animals); // [duck, lion, ♥︎cat, ♥︎dog, ♥︎eagle]
+}
+```
+다트에 for in문은 파이썬에 for in과 비슷하다.<br>
+collection if 처럼 소괄호 옆에 있는 값이 리스트 내에 들어간다.
+
+아래 코드와 같다.
+```dart
+void main() {
+  var favoriteAnimals = ['cat', 'dog', 'eagle'];
+  var animals = ['duck', 'lion'];
+  for (var animal in favoriteAnimals) {
+    animals.add("♥︎$animal");
+  }
+  print(animals); // [duck, lion, ♥︎cat, ♥︎dog, ♥︎eagle]
+}
+```
