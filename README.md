@@ -78,3 +78,24 @@ void main() {
 ```
 
 외부에서 데이터를 받았는데 그 데이터의 타입을 모를 때 dynamic을 쓸 수 있다.
+
+## **1-3. Nullable Variables**
+dart는 null safety 언어로 null을 쓰려면 타입과 함께 ?를 써야한다.
+```dart
+void main() {
+    String? phone = 'samsung';
+    phone = null;
+}
+```
+당연히 nullable은 변수에 해당 타입의 메소드나 속성에 접근 하려고 할 때 null일 경우를 막아줘야한다.
+
+if 문으로 막아줄 수도 있지만<br>
+?.로 메소드나 속성에 접근하면 변수가 null일 경우 접근을 막아준다.
+```dart
+void main() {
+  String? phone = 'Galaxy Quantum 3';
+  print(phone?.startsWith('Galaxy')); // true
+  phone = null;
+  print(phone?.startsWith('iPhone')); // null
+}
+```
