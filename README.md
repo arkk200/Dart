@@ -162,3 +162,50 @@ void main() {
     E = 2.71828; // 에러 발생
 }
 ```
+
+# **2. 데이터 타입**
+다트에 거의 모든 것들이 오브젝트이다.<br>
+String, int, double, bool 또한 오브젝트로 이루어져있고 함수도 오브젝트이다.
+
+## **2-1. Lists**
+파이썬이나 JS처럼 대괄호 안에 요소를 적는 식으로 만든다.
+
+타입은 List<자료형> 형태이다.
+```dart
+void main() {
+    var numbers = [1, 2, 3, 4, 5];
+    List<double> rates = [1.2, 4.8, 3.3, 2.7, 3.8];
+}
+```
+요소를 추가할 때는 .add() 메소드를 사용하면 되고, 지울 땐 .remove() 메소드를 사용하면 된다.
+```dart
+void main() {
+    var numbers = [1, 2, 3, 4, 5];
+    numbers.add(6); // [1, 2, 3, 4, 5, 6]
+    numbers.remove(3); // [1, 2, 4, 5, 6]
+}
+```
+다트에는 collection if라는게 있다.<br>
+리스트에 if 문이 있는 형태인데, 만약 if 문에 조건식이 맞으면 조건식 옆에 값이 들어가는 기능이다.
+```dart
+void main() {
+    var addFive = true;
+    var numList = [
+        1,
+        2,
+        3,
+        4,
+        if (addFive) 5, // addFive가 true라면 5가 들어감
+    ];
+    print(numList); // [1, 2, 3, 4, 5]
+}
+```
+아래 코드와 같다.
+```dart
+void main() {
+    var addFive = true;
+    var numList = [1, 2, 3, 4];
+    if(addFive) numList.add(5);
+    print(numList); // [1, 2, 3, 4, 5]
+}
+```
