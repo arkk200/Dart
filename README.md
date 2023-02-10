@@ -293,3 +293,31 @@ void main() {
     };
 }
 ```
+
+## **2-5. Sets**
+리스트랑 비슷하게 중괄호라 요소들을 감싸주면 된다.
+
+```dart
+void main() {
+    var numbers = {1, 2, 3, 4, 5};
+}
+```
+
+타입도 직접 지정해줄 수 있다.
+```dart
+void main() {
+    Set<int> evens = {2, 4, 6, 8, 10};
+}
+```
+
+Sets라는 이름처럼 집합을 나타내는 타입인데, 집합 내에서 모든 오소들이 중복되지 않는 것처럼 Sets 타입도 마찬가지다.<br>
+add로 같은 요소를 여러번 추가해도 한번만 들어간다.
+```dart
+void main() {
+    var odds = {1, 3, 5, 7};
+    odds.add(9);
+    odds.add(9);
+    odds.add(9);
+    print(odds); // {1, 3, 5, 7, 9}
+}
+```
