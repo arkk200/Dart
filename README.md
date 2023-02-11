@@ -582,3 +582,32 @@ void main() {
 ```
 
 named parameters와 비슷하게 required를 쓰거나 기본값을 주어야 오류를 없앨 수 있다.
+
+## **4-3. Named Constructors**
+클래스명.constructor명 형태로 쓰인다.
+```dart
+class Player {
+  late String name;
+  late int age;
+  late String teamColor;
+  late String teamName;
+
+  Player(this.name, this.age, this.teamColor);
+  Player.blueTeam(this.name, this.age)
+      : this.teamColor = 'blue',
+        this.teamName = "dart";
+
+  Player.redTeam({
+    required this.name,
+    required this.age,
+  })  : this.teamColor = 'red',
+        this.teamName = "ruby";
+}
+
+void main() {
+  var blueTeamPlayer = Player.blueTeam("dart", 10);
+  var redTeamPlayer = Player.redTeam(name: "ruby", age: 27);
+}
+```
+객체를 선언할 때도 클래스명.constructor명 형태로 선언하고, 이 named constructor에서 프로퍼티에 값을 할당할 땐 콜론(:)을 써서 프로퍼티에 값을 할당한다.<br>
+프로퍼티가 여러개일 땐 쉼표(,)로 구분한다.
