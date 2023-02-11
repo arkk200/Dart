@@ -322,7 +322,7 @@ void main() {
 }
 ```
 
-## **3. Functions**
+## **3. 함수**
 dart에서 함수는 `반환형 함수명(파라미터) {}` 형태로 적는다.
 
 반환형에 main함수에 void는 아무것도 반환하지 않겠다는 의미이다.
@@ -469,3 +469,96 @@ void main() {
     print(evenNumbers); // [2, 4, 6, 8, 10]
 }
 ```
+
+# **4. 클래스**
+클래스는 `class 클래스명 {}` 형태로 쓴다.<br>
+클래스 내 프로퍼티는 타입으로 정의한다.
+```dart
+class Player {
+    String name = "asf";
+    int age; // 에러 발생
+}
+```
+
+dart 스타일가이드에서 class의 프로퍼티는 타입으로 정의하는 걸 권장한다.<br>
+타입으로 정의할 경우 변수를 무조건 초기화해줘야한다.
+
+객체를 생성할 땐 var로 지정할 경우 초기화해줄 필요가 없는데 dynamic 타입이 되기 때문이다.
+
+일반적인 변수와 마찬가지로 final, late를 달 수 있고, [여기서](#1-5-late-variables) 봤듯이 late를 쓰면 타입을 직접적으로 쓰더라도 초기화를 해줄 필요가 없어진다.
+
+메소드는 클래스에 그냥 함수 쓰듯이 정의하면 된다.
+```dart
+class Player {
+    String name = "Anonymous";
+    void jump() {
+        print("$name is Jumping!");
+    }
+}
+
+void main() {
+    var player = Player();
+    player.name = "leemyeongjae";
+    player.jump();
+}
+```
+
+만약 메소드 내에 프로퍼티와 같은 이름의 변수가 있고, 그 프로퍼티에 접근을 하고 싶다면 this 키워드를 사용하면 된다.
+
+이때 this는 Player를 가르킨다.
+```dart
+class Player {
+    String name = "Anonymous";
+    void jump() {
+        var name = "Someone";
+        print("${this.name} is Jumping!");
+    }
+}
+
+void main() {
+    var player = Player();
+    player.name = "leemyeongjae";
+    player.jump();
+}
+```
+
+## **4-1. Constructors**
+constructor는 객체를 생성할 때 객체 내 프로퍼티도 함께 선언하게 해준다.
+
+또한 constructor로 프로퍼티에 값을 준다고 해도 프로퍼티에 값이 없다면 late를 달아줘야한다.
+```dart
+class Player {
+    late String name;
+    late int age;
+    late String favoriteLang;
+
+    Player(String name, int age, String favoriteLang) {
+        this.name = name;
+        this.age = age;
+        this.favoriteLang = favoriteLang;
+    }
+}
+
+void main() {
+    var player1 = Player("leemyeongjae", 16, "JavaScript");
+    var player2 = Player("crab", 11, "Rust");
+    var player3 = Player("camel", 35, "Perl");
+}
+```
+
+위 예처럼 constructor를 쓸 경우, 특징이 다른 객체들을 보다 쉽게 생성해낼 수 있다.
+
+프로퍼티에 값을 할당해줄 때 this.프로퍼티를 인자로 대체해서 간추릴 수 있다.
+```dart
+class Monster {
+    String name;
+    bool canFly;
+    int hp;
+    Monster(this.name, this.canFly, this.hp);
+}
+
+void main() {
+    var monster = Monster("dragon", true, 9999);
+}
+```
+이러면 late 키워드도 없앨 수 있다.
