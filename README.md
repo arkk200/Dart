@@ -407,11 +407,11 @@ void main() {
 }
 ```
 
-기존 방식이었던 positional parameter의 경우, 인자의 위치를 기억해야한다는 단점이 있다.<br>
-named parameter의 경우 위치를 기억할 필요도 없기에 함수를 일일이 볼 필요가 없다.
+기존 방식이었던 positional parameters의 경우, 인자의 위치를 기억해야한다는 단점이 있다.<br>
+named parameters의 경우 위치를 기억할 필요도 없기에 함수를 일일이 볼 필요가 없다.
 
 ## **3-2. Optional Positional Parameters**
-named parameter가 아닌데 기본값을 주고 싶을 땐 대괄호를 사용하면 된다.
+named parameters가 아닌데 기본값을 주고 싶을 땐 대괄호를 사용하면 된다.
 ```dart
 void printIntroduce([
   String name = "anonymous",
@@ -425,8 +425,8 @@ void main() {
   printIntroduce();
 }
 ```
-대괄호를 썼는데 기본값을 설정하지 않으면 named Parameter처럼 에러가 난다.<br>
-named Parameter와의 차이점이라면 required를 쓸 수 없다.
+대괄호를 썼는데 기본값을 설정하지 않으면 named parameters처럼 에러가 난다.<br>
+named parameters와의 차이점이라면 required를 쓸 수 없다.
 
 ## **3-3. QQ Operator**
 QQ Operator, ??는 2개의 피연산자를 갖는데, 만약 왼쪽 값이 null이면 오른쪽에 있는 값을 반환하고, 그렇지 않다면 왼쪽에 있는 값을 반환하는 연산자이다.
@@ -562,3 +562,23 @@ void main() {
 }
 ```
 이러면 late 키워드도 없앨 수 있다.
+
+## **4-2. Named Constructor Parameters**
+named constructor parameters는 함수에 named parameters와 비슷하게 인자를 중괄호로 묶으면된다.
+```dart
+class Player {
+  late String name;
+  late int age;
+  late String favoriteLang;
+
+  Player({required this.name, required this.age, this.favoriteLang = "None"});
+}
+
+void main() {
+  var player1 = Player(name: "leemyeongjae", age: 16);
+  var player2 = Player(name: "crab", age: 11, favoriteLang: "Rust");
+  var player3 = Player(name: "camel", age: 35, favoriteLang: "Perl");
+}
+```
+
+named parameters와 비슷하게 required를 쓰거나 기본값을 주어야 오류를 없앨 수 있다.
