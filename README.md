@@ -427,3 +427,29 @@ void main() {
 ```
 대괄호를 썼는데 기본값을 설정하지 않으면 named Parameter처럼 에러가 난다.<br>
 named Parameter와의 차이점이라면 required를 쓸 수 없다.
+
+## **3-3. QQ Operator**
+QQ Operator, ??는 2개의 피연산자를 갖는데, 만약 왼쪽 값이 null이면 오른쪽에 있는 값을 반환하고, 그렇지 않다면 왼쪽에 있는 값을 반환하는 연산자이다.
+```dart
+void logIn({String? name}) {
+  print("${name ?? "Anonymous"} was logged in.");
+}
+
+void main() {
+  logIn(name: "leemyeongjae"); // leemyeongjae was logged in.
+  logIn(); // Anonymous was logged in.
+}
+```
+
+QQ assignment operator, ??= 는 할당 연산자인데 왼쪽에 변수에 값이 null이라면 오른쪽에 값을 할당해주고 그렇지 않다면 할당해주지 않는 연산자이다.
+```dart
+void logOut({String? name}) {
+  name ??= "Anonymous";
+  print("$name was logged out.");
+}
+
+void main() {
+  logOut(name: "leemyeongjae"); // leemyeongjae was logged out.
+  logOut(); // Anonymous was logged out.
+}
+```
