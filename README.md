@@ -409,3 +409,21 @@ void main() {
 
 기존 방식이었던 positional parameter의 경우, 인자의 위치를 기억해야한다는 단점이 있다.<br>
 named parameter의 경우 위치를 기억할 필요도 없기에 함수를 일일이 볼 필요가 없다.
+
+## **3-2. Optional Positional Parameters**
+named parameter가 아닌데 기본값을 주고 싶을 땐 대괄호를 사용하면 된다.
+```dart
+void printIntroduce([
+  String name = "anonymous",
+  int age = 18,
+  String country = "earth",
+]) {
+  print("Hello, I'm $name. I'm $age years old. I'm from $country");
+}
+
+void main() {
+  printIntroduce();
+}
+```
+대괄호를 썼는데 기본값을 설정하지 않으면 named Parameter처럼 에러가 난다.<br>
+named Parameter와의 차이점이라면 required를 쓸 수 없다.
