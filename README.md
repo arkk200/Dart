@@ -321,3 +321,91 @@ void main() {
     print(odds); // {1, 3, 5, 7, 9}
 }
 ```
+
+## **3. Functions**
+dart에서 함수는 `반환형 함수명(파라미터) {}` 형태로 적는다.
+
+반환형에 main함수에 void는 아무것도 반환하지 않겠다는 의미이다.
+만약 문자열을 반환한다면 void자리에 String, 정수라면 int를 적으면 된다.
+```dart
+String getHello() {
+    return 'Hello!';
+}
+
+void main() {
+    print(getHello());
+}
+```
+
+파라미터를 넘길 때 인자는 일반 변수 선언하듯이 하면 된다.
+```dart
+void sayHello(String name) {
+    print("Hello! $name.");
+}
+
+void main() {
+    sayHello("leemyeongjae");
+}
+```
+
+만약 함수 내에 반환하는 return 문 한 줄밖에 없다면 => 기호로 간단히 만들 수 있다.
+```dart
+String getHello(String name) => 'Hello! $name.';
+
+void main() {
+    print(getHello("leemyeongjae"));
+}
+```
+
+## **3-1. Named Parameters**
+`함수(인자명: 값)` 형태로 함수에 인수를 전달하는 방식으로 가독성을 높일 수 있다.<br>
+이때 함수의 인자들을 중괄호로 감싸줘야한다.
+```dart
+void printIntroduce({String name, int age, String country}) {
+    print("Hello, I'm $name. I'm $age years old. I'm from $country");
+}
+
+void main() {
+    printIntroduce(name: "leemyeongjae", age: 16, country: "Korea");
+}
+```
+
+그럼 인자의 값이 null일 수 있다는 에러가 하나 뜬다.
+
+해결법은 2가지가 있는데 첫번째는 기본값을 주는 것이다.
+
+그럼 인수를 다 주지 않아도 에러가 나지 않는다.
+```dart
+void printIntroduce({
+    String name = "anonymous",
+    int age = 18,
+    String country = "earth",
+}) {
+    print("Hello, I'm $name. I'm $age years old. I'm from $country");
+}
+
+void main() {
+    printIntroduce(name: "leemyeongjae");
+}
+```
+
+두번째 방법으론 인자 옆에 required 키워드를 붙이는 것이다.<br>
+required를 쓰면 무조건 인수를 넘겨줘야한다.<br>
+단, required는 기본값과 같이 쓸 수 없다.
+```dart
+void printIntroduce({
+    required String name,
+    required int age,
+    required String country,
+    required int lev = 10, // 에러 발생
+}) {
+    print("Hello, I'm $name. I'm $age years old. I'm from $country");
+}
+
+void main() {
+    printIntroduce(name: "leemyeongjae", age: 16, country: "Korea");
+}
+```
+
+기존 방식이었던 positional parameter의 경우, 인자의 위치를 기억해야한다는 단점이 있다.<br>
+named parameter의 경우 위치를 기억할 필요도 없기에 함수를 일일이 볼 필요가 없다.
