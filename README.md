@@ -635,3 +635,75 @@ void main() {
 }
 ```
 ..에서 앞에 .이 player를 가르킨다고 생각하면 되고, 세미콜론으로 끊으면 된다.
+
+## **4-5 Enums**
+enum은 많이 쓰이는 문자열, 값들을 하나의 묶음으로 만들어주는 기능이다.
+
+```dart
+class Player {
+  late String teamName;
+  late int age;
+
+  Player({
+    required this.teamName,
+    required this.age,
+  });
+  
+  void introduceYourTeam() {
+    if (this.teamName == "dart") {
+      print("I'm blue team");
+    } else if (this.teamName == "ruby") {
+      print("I'm red team");
+    }
+  }
+}
+
+void main() {
+  var blueTeamPlayer = Player(age: 10, teamName: 'dart');
+  var redTeamPlayer = Player(age: 27, teamName: 'ruby');
+
+  blueTeamPlayer.introduceYourTeam();
+  redTeamPlayer.introduceYourTeam();
+}
+```
+
+위에 Player 클래스가 있고 팀명이 "dart", "ruby"로 구분된다고 한다면 enum을 써서 아래처럼 바꿀 수 있다.
+
+```dart
+enum TeamName { dart, ruby }
+
+class Player {
+  late TeamName teamName;
+  late int age;
+
+  Player({
+    required this.teamName,
+    required this.age,
+  });
+
+  void introduceYourTeam() {
+    if (this.teamName == TeamName.dart) {
+      print("I'm blue team");
+    } else if (this.teamName == TeamName.ruby) {
+      print("I'm red team");
+    }
+  }
+}
+
+void main() {
+  var blueTeamPlayer = Player(age: 10, teamName: TeamName.dart);
+  var redTeamPlayer = Player(age: 27, teamName: TeamName.ruby);
+
+  blueTeamPlayer.introduceYourTeam();
+  redTeamPlayer.introduceYourTeam();
+}
+```
+
+문자열 실수가 일어날 수 있는 객체 생성부분과 if문 조건식에 문자열을 enum을 사용하여 묶어주었다.<br>
+이런 방식으로 경우 오타가 발생했을 때 에러 하이라이팅이 될 뿐만 아니라 에러의 발생 위치도 쓸데 없는 곳에서 일어나지 않는다.
+
+값을 할당할 땐
+```dart
+enum Thing { dart("dart"), ruby("ruby") }
+```
+처럼 소괄호 안에 값을 쓰면 된다.
