@@ -611,3 +611,27 @@ void main() {
 ```
 객체를 선언할 때도 클래스명.constructor명 형태로 선언하고, 이 named constructor에서 프로퍼티에 값을 할당할 땐 콜론(:)을 써서 프로퍼티에 값을 할당한다.<br>
 프로퍼티가 여러개일 땐 쉼표(,)로 구분한다.
+
+## **4-4. Cascade Notation**
+cascade notation은 객체를 생성한 뒤, 프로퍼티를 줄 때 간단하게 줄 수 있게 해주는 기능이다.
+```dart
+class Player {
+  late String name;
+  late int age;
+  late String favoriteLang;
+
+  void introduceYourSelf() {
+    print(
+        "Hello, I'm $name, $age years old, my favorite language is $favoriteLang");
+  }
+}
+
+void main() {
+  var player = Player()
+    ..name = "leemyeongjae"
+    ..age = 16
+    ..favoriteLang = "JS"
+    ..introduceYourSelf();
+}
+```
+..에서 앞에 .이 player를 가르킨다고 생각하면 되고, 세미콜론으로 끊으면 된다.
