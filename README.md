@@ -567,17 +567,17 @@ void main() {
 named constructor parameters는 함수에 named parameters와 비슷하게 인자를 중괄호로 묶으면된다.
 ```dart
 class Player {
-  late String name;
-  late int age;
-  late String favoriteLang;
+    late String name;
+    late int age;
+    late String favoriteLang;
 
-  Player({required this.name, required this.age, this.favoriteLang = "None"});
+    Player({required this.name, required this.age, this.favoriteLang = "None"});
 }
 
 void main() {
-  var player1 = Player(name: "leemyeongjae", age: 16);
-  var player2 = Player(name: "crab", age: 11, favoriteLang: "Rust");
-  var player3 = Player(name: "camel", age: 35, favoriteLang: "Perl");
+    var player1 = Player(name: "leemyeongjae", age: 16);
+    var player2 = Player(name: "crab", age: 11, favoriteLang: "Rust");
+    var player3 = Player(name: "camel", age: 35, favoriteLang: "Perl");
 }
 ```
 
@@ -587,26 +587,26 @@ named parameters와 비슷하게 required를 쓰거나 기본값을 주어야 �
 클래스명.constructor명 형태로 쓰인다.
 ```dart
 class Player {
-  late String name;
-  late int age;
-  late String teamColor;
-  late String teamName;
+    late String name;
+    late int age;
+    late String teamColor;
+    late String teamName;
 
-  Player(this.name, this.age, this.teamColor);
-  Player.blueTeam(this.name, this.age)
-      : this.teamColor = 'blue',
-        this.teamName = "dart";
+    Player(this.name, this.age, this.teamColor);
+    Player.blueTeam(this.name, this.age)
+        : this.teamColor = 'blue',
+          this.teamName = "dart";
 
-  Player.redTeam({
-    required this.name,
-    required this.age,
-  })  : this.teamColor = 'red',
-        this.teamName = "ruby";
+    Player.redTeam({
+      required this.name,
+      required this.age,
+    })  : this.teamColor = 'red',
+          this.teamName = "ruby";
 }
 
 void main() {
-  var blueTeamPlayer = Player.blueTeam("dart", 10);
-  var redTeamPlayer = Player.redTeam(name: "ruby", age: 27);
+    var blueTeamPlayer = Player.blueTeam("dart", 10);
+    var redTeamPlayer = Player.redTeam(name: "ruby", age: 27);
 }
 ```
 객체를 선언할 때도 클래스명.constructor명 형태로 선언하고, 이 named constructor에서 프로퍼티에 값을 할당할 땐 콜론(:)을 써서 프로퍼티에 값을 할당한다.<br>
@@ -616,22 +616,21 @@ void main() {
 cascade notation은 객체를 생성한 뒤, 프로퍼티를 줄 때 간단하게 줄 수 있게 해주는 기능이다.
 ```dart
 class Player {
-  late String name;
-  late int age;
-  late String favoriteLang;
+    late String name;
+    late int age;
+    late String favoriteLang;
 
-  void introduceYourSelf() {
-    print(
-        "Hello, I'm $name, $age years old, my favorite language is $favoriteLang");
-  }
+    void introduceYourSelf() {
+        print("Hello, I'm $name, $age years old, my favorite language is $favoriteLang");
+    }
 }
 
 void main() {
-  var player = Player()
-    ..name = "leemyeongjae"
-    ..age = 16
-    ..favoriteLang = "JS"
-    ..introduceYourSelf();
+    var player = Player()
+        ..name = "leemyeongjae"
+        ..age = 16
+        ..favoriteLang = "JS"
+        ..introduceYourSelf();
 }
 ```
 ..에서 앞에 .이 player를 가르킨다고 생각하면 되고, 세미콜론으로 끊으면 된다.
@@ -641,29 +640,29 @@ enum은 많이 쓰이는 문자열, 값들을 하나의 묶음으로 만들어�
 
 ```dart
 class Player {
-  late String teamName;
-  late int age;
+    late String teamName;
+    late int age;
 
-  Player({
-    required this.teamName,
-    required this.age,
-  });
-  
-  void introduceYourTeam() {
-    if (this.teamName == "dart") {
-      print("I'm blue team");
-    } else if (this.teamName == "ruby") {
-      print("I'm red team");
+    Player({
+        required this.teamName,
+        required this.age,
+    });
+    
+    void introduceYourTeam() {
+        if (this.teamName == "dart") {
+            print("I'm blue team");
+        } else if (this.teamName == "ruby") {
+            print("I'm red team");
+        }
     }
-  }
 }
 
 void main() {
-  var blueTeamPlayer = Player(age: 10, teamName: 'dart');
-  var redTeamPlayer = Player(age: 27, teamName: 'ruby');
+    var blueTeamPlayer = Player(age: 10, teamName: 'dart');
+    var redTeamPlayer = Player(age: 27, teamName: 'ruby');
 
-  blueTeamPlayer.introduceYourTeam();
-  redTeamPlayer.introduceYourTeam();
+    blueTeamPlayer.introduceYourTeam();
+    redTeamPlayer.introduceYourTeam();
 }
 ```
 
@@ -673,29 +672,29 @@ void main() {
 enum TeamName { dart, ruby }
 
 class Player {
-  late TeamName teamName;
-  late int age;
+    late TeamName teamName;
+    late int age;
 
-  Player({
-    required this.teamName,
-    required this.age,
-  });
+    Player({
+        required this.teamName,
+        required this.age,
+    });
 
-  void introduceYourTeam() {
-    if (this.teamName == TeamName.dart) {
-      print("I'm blue team");
-    } else if (this.teamName == TeamName.ruby) {
-      print("I'm red team");
+    void introduceYourTeam() {
+        if (this.teamName == TeamName.dart) {
+            print("I'm blue team");
+        } else if (this.teamName == TeamName.ruby) {
+            print("I'm red team");
+        }
     }
-  }
 }
 
 void main() {
-  var blueTeamPlayer = Player(age: 10, teamName: TeamName.dart);
-  var redTeamPlayer = Player(age: 27, teamName: TeamName.ruby);
+    var blueTeamPlayer = Player(age: 10, teamName: TeamName.dart);
+    var redTeamPlayer = Player(age: 27, teamName: TeamName.ruby);
 
-  blueTeamPlayer.introduceYourTeam();
-  redTeamPlayer.introduceYourTeam();
+    blueTeamPlayer.introduceYourTeam();
+    redTeamPlayer.introduceYourTeam();
 }
 ```
 
@@ -717,31 +716,114 @@ abstract class Human {
 }
 
 class Student extends Human {
-  late String name;
-  late int age;
+    late String name;
+    late int age;
 
-  void introduce() {
-    print("Hello, I'm student, $name");
-  }
+    void introduce() {
+        print("Hello, I'm student, $name");
+    }
 }
 
 class Developer extends Human {
-  late String favoriteLanguage;
+    late String favoriteLanguage;
 
-  void introduce() {
-    print("Hello, I'm developer. my favorite language is $favoriteLanguage");
-  }
+    void introduce() {
+        print("Hello, I'm developer. my favorite language is $favoriteLanguage");
+    }
 }
 
 void main() {
-  var student = Student()
-    ..name = "leemyeongjae"
-    ..introduce();
+    var student = Student()
+      ..name = "leemyeongjae"
+      ..introduce();
 
-  var developer = Developer()
-    ..favoriteLanguage = "Dart"
-    ..introduce();
+    var developer = Developer()
+      ..favoriteLanguage = "Dart"
+      ..introduce();
 }
 ```
 
 상속은 `자식 extends 부모` 형식으로 하고 추상클래스를 상속받은 클래스는 추상클래스에 정의된 메소드를 항상 구현해줘야 한다.
+
+## **4-7. Inheritance**
+상속은 추상클래스를 상속하듯이 extends를 이용하여 클래스를 상속하는 것을 의미한다.
+```dart
+class Human {
+    final String name;
+
+    Human(this.name);
+
+    void sayHello() {
+        print("Hi, my name is $name");
+    }
+}
+
+enum Occupation { teacher, student }
+
+class SchoolWorker extends Human {
+    final Occupation occupation;
+
+    SchoolWorker({
+        required this.occupation,
+        required String name,
+    }) : super(name);
+
+    @override
+    void sayHello() {
+        super.sayHello();
+        print("and I'm $occupation");
+    }
+}
+
+void main() {
+    var teacher = SchoolWorker(occupation: Occupation.teacher, name: "John")
+        ..sayHello();
+
+    var student = SchoolWorker(occupation: Occupation.student, name: "Cena")
+        ..sayHello();
+}
+```
+Human 클래스가 있고 그 클래스를 상속받는 SchoolWorker가 있다.
+
+자식 클래스에서 constructor가 동작할 때, 부모 클래스의 constructor도 동작해야 하는데,<br>
+부모 클래스의 constructor에 인자를 보낼 땐 `super()`를 호출하면 된다.
+
+부모 클래스의 메소드를 호출할 땐 `super.메서드명()` 형식으로 호출하면 된다.
+
+자식이 부모의 메소드를 오버라이딩할 때 반환값과 시그니쳐가 같지 않다면 에러가 난다.
+
+```dart
+class Human {
+  final String name;
+  Human(this.name);
+
+  void sayHello() { // 반환값: void, 시그니쳐 없음
+    print("Hi, my name is $name");
+  }
+}
+
+enum Occupation { teacher, student }
+
+class SchoolWorker extends Human {
+  final Occupation occupation;
+  SchoolWorker({
+    required this.occupation,
+    required String name,
+  }) : super(name);
+
+  @override
+  int sayHello(String name) { // 에러 발생
+    super.sayHello();
+    print("and I'm $occupation");
+  }
+}
+
+void main() {
+  var teacher = SchoolWorker(occupation: Occupation.teacher, name: "John")
+    ..sayHello();
+
+  var student = SchoolWorker(occupation: Occupation.student, name: "Cena")
+    ..sayHello();
+}
+```
+그리고 오버라이딩하는 메소드 위에 @override 데코레이션은 생략해줘도 된다.
