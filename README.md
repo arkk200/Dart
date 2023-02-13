@@ -707,3 +707,41 @@ void main() {
 enum Thing { dart("dart"), ruby("ruby") }
 ```
 처럼 소괄호 안에 값을 쓰면 된다.
+
+## **4-6. Abstract Classes**
+추상 클래스는 객체를 생성할 수 없고 상속만 가능한 클래스이다.
+
+```dart
+abstract class Human {
+  void introduce();
+}
+
+class Student extends Human {
+  late String name;
+  late int age;
+
+  void introduce() {
+    print("Hello, I'm student, $name");
+  }
+}
+
+class Developer extends Human {
+  late String favoriteLanguage;
+
+  void introduce() {
+    print("Hello, I'm developer. my favorite language is $favoriteLanguage");
+  }
+}
+
+void main() {
+  var student = Student()
+    ..name = "leemyeongjae"
+    ..introduce();
+
+  var developer = Developer()
+    ..favoriteLanguage = "Dart"
+    ..introduce();
+}
+```
+
+상속은 `자식 extends 부모` 형식으로 하고 추상클래스를 상속받은 클래스는 추상클래스에 정의된 메소드를 항상 구현해줘야 한다.
