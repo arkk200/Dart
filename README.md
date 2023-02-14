@@ -827,3 +827,39 @@ void main() {
 }
 ```
 그리고 오버라이딩하는 메소드 위에 @override 데코레이션은 생략해줘도 된다.
+
+## **4-8. Mixins**
+mixin은 생성자가 없는 클래스를 의미한다.<br>
+다른 클래스에서 쓰는 중복되는 메서드나 프로퍼티를 하나로 묶고, 연결할 때 사용한다.
+
+연결할 땐 with를 쓴다.
+```dart
+class Birds {
+  int flyingSpeed = 1;
+}
+
+class TerrestrialAnimal {
+  void run() {
+    print("running...");
+  }
+}
+
+class Dog with TerrestrialAnimal {}
+
+class Tiger with TerrestrialAnimal {}
+
+class Parrot with Birds {}
+
+class Eagle with Birds {}
+
+void main() {
+  var dog = Dog()..run();
+  var tiger = Tiger()..run();
+
+  var parrot = Parrot();
+  print(parrot.flyingSpeed);
+  var eagle = Eagle();
+  print(eagle.flyingSpeed);
+}
+```
+또한 mixin은 with를 써서 한번 더 연결시킬 수 없다.
